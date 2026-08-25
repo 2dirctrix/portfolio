@@ -17,7 +17,17 @@ import ShellPrompt from '../ShellPrompt.vue'
               aria-hidden="true"
             ></span>
 
-            <p class="font-mono text-[11px] md:text-xs text-ubuntu-orange">{{ entry.period }}</p>
+            <p class="flex items-center gap-2 flex-wrap">
+              <span class="font-mono text-[11px] md:text-xs text-ubuntu-orange">
+                {{ entry.period }}
+              </span>
+              <span
+                v-if="entry.ongoing"
+                class="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-green-400/15 text-green-400 border border-green-400/30"
+              >
+                진행 중
+              </span>
+            </p>
             <h3 class="text-base md:text-lg font-bold text-white mt-0.5">{{ entry.title }}</h3>
             <p class="text-white/55 text-sm">{{ entry.org }}</p>
 

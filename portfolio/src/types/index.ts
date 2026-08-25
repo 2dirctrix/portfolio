@@ -35,6 +35,8 @@ export interface TimelineEntry {
   title: string
   org: string
   points: string[]
+  /** 현재 진행 중인 경력이면 배지를 표시한다 */
+  ongoing?: boolean
 }
 
 export interface Contact {

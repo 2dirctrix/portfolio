@@ -186,6 +186,25 @@ export const projects: Project[] = [...projectList].sort((a, b) =>
 
 export const timeline: TimelineEntry[] = [
   {
+    period: '2026.08 ~ 2026.09',
+    ongoing: true,
+    title: 'AI Agent 제작 교육 실습코치',
+    org: 'SK이노베이션 임직원 대상',
+    // 교육 내용이 대외비라 상세는 적지 않는다
+    points: [],
+  },
+  {
+    period: '2026.08 ~ 진행 중',
+    ongoing: true,
+    title: 'AI Agent 교육 실습코치',
+    org: '삼성 전 계열사 과차장 대상',
+    points: [
+      '생성형 AI·AX 트렌드와 비즈니스 적용 사례를 주제로 한 교육에서 수강생 질의 응대',
+      '조직 운영·의사결정 관점의 AI 활용 실습 지원',
+      '교육 흐름이 끊기지 않도록 현장 진행 지원',
+    ],
+  },
+  {
     period: '2026.05 ~ 2026.08',
     title: 'AI Agent 교육 실습코치',
     org: '삼성 전 계열사 사장단·임원진 대상',

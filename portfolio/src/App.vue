@@ -34,14 +34,22 @@ const sections = [
 ]
 
 const activeSection = ref('home')
+const showTopButton = ref(false)
 const scrollerRef = useTemplateRef<HTMLElement>('scroller')
+
+const scrollBehavior = (): ScrollBehavior =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
 
 const scrollTo = (id: string) => {
   const target = scrollerRef.value?.querySelector<HTMLElement>(`[data-section="${id}"]`)
   if (!target) return
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' })
+  target.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
+}
+
+// 런처가 아닌 스크롤 컨테이너 자체를 맨 위로 올린다
+const scrollToTop = () => {
+  scrollerRef.value?.scrollTo({ top: 0, behavior: scrollBehavior() })
 }
 
 // 스크롤 위치로 현재 섹션을 판정한다 (런처 클릭과 휠 스크롤 양쪽에서 동일하게 동작)
@@ -52,6 +60,9 @@ const syncActiveSection = () => {
     frame = 0
     const scroller = scrollerRef.value
     if (!scroller) return
+
+    // 한 화면 이상 내려갔을 때만 '맨 위로' 버튼을 띄운다
+    showTopButton.value = scroller.scrollTop > scroller.clientHeight * 0.6
 
     const nodes = [...scroller.querySelectorAll<HTMLElement>('[data-section]')]
     const first = nodes[0]
@@ -124,13 +135,13 @@ onUnmounted(() => {
     <div class="flex flex-1 overflow-hidden min-h-0">
       <!-- 2. Side Launcher: 클릭하면 해당 섹션으로 스크롤된다 -->
       <aside
-        class="w-12 md:w-16 bg-black/20 backdrop-blur-xl flex flex-col items-center py-4 gap-2 md:gap-4 border-r border-white/5 shrink-0 select-none"
+        class="relative z-30 w-12 md:w-16 bg-black/20 backdrop-blur-xl flex flex-col items-center py-4 gap-2 md:gap-4 border-r border-white/5 shrink-0 select-none"
       >
         <!-- 활성 표시 막대가 잘리지 않도록, 런처 폭 전체를 기준(relative)으로 삼는다 -->
         <div
           v-for="section in sections"
           :key="section.id"
-          class="relative w-full flex justify-center"
+          class="group relative w-full flex justify-center"
         >
           <div
             v-if="activeSection === section.id"
@@ -138,12 +149,16 @@ onUnmounted(() => {
           ></div>
           <button
             type="button"
-            :title="section.label"
             :aria-label="section.label"
             :aria-current="activeSection === section.id ? 'true' : undefined"
-            class="p-2 rounded-xl transition-all hover:bg-white/10 active:scale-90 cursor-pointer"
+            class="relative p-2 rounded-2xl cursor-pointer transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-white/10 hover:scale-[1.18] hover:shadow-lg hover:shadow-ubuntu-orange/25 active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ubuntu-orange"
             @click="scrollTo(section.id)"
           >
+            <!-- glow ring -->
+            <span
+              class="pointer-events-none absolute inset-0 rounded-2xl border border-ubuntu-orange/50 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              aria-hidden="true"
+            ></span>
             <svg
               viewBox="0 0 24 24"
               class="w-7 h-7 md:w-9 md:h-9 drop-shadow-md transition-colors"
@@ -152,6 +167,14 @@ onUnmounted(() => {
               <path :d="section.icon" />
             </svg>
           </button>
+
+          <!-- 툴팁: 호버와 키보드 포커스 모두에서 뜬다 -->
+          <span
+            class="pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-1 md:ml-2 z-40 whitespace-nowrap rounded-md border border-white/10 bg-black/85 backdrop-blur-sm px-2 py-1 text-xs text-white shadow-lg opacity-0 -translate-x-1 transition-[opacity,transform] duration-150 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0"
+            role="tooltip"
+          >
+            {{ section.label }}
+          </span>
         </div>
       </aside>
 
@@ -162,6 +185,27 @@ onUnmounted(() => {
       >
         <RouterView />
       </main>
+
+      <!-- 맨 위로: 뷰포트 기준 고정. 상세 다이얼로그(z-100)보다는 아래에 둔다 -->
+      <Transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 translate-y-2"
+        leave-active-class="transition duration-150 ease-in"
+        leave-to-class="opacity-0 translate-y-2"
+      >
+        <button
+          v-if="showTopButton"
+          type="button"
+          aria-label="맨 위로"
+          title="맨 위로"
+          class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-ubuntu-orange text-white shadow-lg shadow-black/40 hover:brightness-110 active:scale-90 transition-[filter,transform] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer"
+          @click="scrollToTop"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5 md:w-6 md:h-6 fill-current" aria-hidden="true">
+            <path d="M12 4l8 8-1.4 1.4L13 7.8V20h-2V7.8L5.4 13.4 4 12z" />
+          </svg>
+        </button>
+      </Transition>
     </div>
   </div>
 </template>

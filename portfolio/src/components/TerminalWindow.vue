@@ -5,7 +5,7 @@ import ShellPrompt from './ShellPrompt.vue'
 
 <template>
   <div
-    class="w-full bg-ubuntu-terminal/90 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10"
+    class="w-full bg-ubuntu-terminal/90 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10 transition-transform duration-200 ease-out motion-safe:hover:scale-[1.02]"
   >
     <!-- 타이틀 바 -->
     <div class="bg-ubuntu-dark-grey/90 px-3 py-1.5 flex justify-between items-center gap-2">

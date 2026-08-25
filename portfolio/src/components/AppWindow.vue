@@ -6,8 +6,9 @@ defineProps<{
 </script>
 
 <template>
+  <!-- 호버 시 살짝 확대. 모션을 줄인 환경에서는 적용하지 않는다 -->
   <section
-    class="bg-ubuntu-terminal/85 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10"
+    class="bg-ubuntu-terminal/85 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10 transition-transform duration-200 ease-out motion-safe:hover:scale-[1.02]"
   >
     <header class="bg-ubuntu-dark-grey/90 px-3 py-1.5 flex justify-between items-center gap-2">
       <span class="text-[10px] md:text-xs text-ubuntu-warm-grey font-mono truncate">

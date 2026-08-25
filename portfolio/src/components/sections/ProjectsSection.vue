@@ -21,7 +21,7 @@ const VISIBLE_TECH = 3
         v-for="project in projects"
         :key="project.id"
         type="button"
-        class="group text-left bg-ubuntu-terminal/85 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10 transition-all hover:-translate-y-1 hover:border-ubuntu-orange/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ubuntu-orange cursor-pointer flex flex-col"
+        class="group text-left bg-ubuntu-terminal/85 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden border border-white/10 transition-[transform,border-color] duration-200 ease-out motion-safe:hover:scale-[1.02] hover:border-ubuntu-orange/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ubuntu-orange cursor-pointer flex flex-col"
         @click="selected = project"
       >
         <span
