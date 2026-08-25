@@ -13,24 +13,43 @@ body {
   margin: 0;
   /* 실제 우분투 느낌의 3색 대각선 그라데이션 */
   background: linear-gradient(
-    135deg, 
-    #300A24 0%, 
-    #5E2750 45%, 
+    135deg,
+    #300A24 0%,
+    #5E2750 45%,
     #E95420 100%
   );
   background-attachment: fixed; /* 스크롤해도 배경 고정 */
   min-height: 100vh;
   color: white;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', sans-serif;
   overflow: hidden;
 }
 
-/* 약간의 노이즈 질감을 추가하면 더 고급스러워집니다 (선택사항) */
+/* 노이즈 질감: 외부 이미지 대신 인라인 SVG라 네트워크 없이도 동작 */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0.03;
+  opacity: 0.05;
   pointer-events: none;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 터미널 내부 스크롤바를 우분투 톤으로 (Tailwind 기본에는 없는 유틸이라 직접 정의) */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ubuntu-orange) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-ubuntu-orange);
+  border-radius: 4px;
 }

@@ -1,0 +1,10 @@
+# Claude Code 로컬 설정 (실행 설정·권한 등 개인 환경에 종속)
+.claude/
+CLAUDE.local.md
+
+# Visual Studio
+.vs/
+
+# OS
+.DS_Store
+Thumbs.db
