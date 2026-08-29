@@ -39,6 +39,11 @@ export interface TimelineEntry {
   ongoing?: boolean
 }
 
+export interface Strength {
+  title: string
+  body: string
+}
+
 export interface Contact {
   label: string
   /** 화면에 보이는 값 */

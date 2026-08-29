@@ -7,21 +7,27 @@
   --color-ubuntu-warm-grey: #AEA79F;
   --color-ubuntu-dark-grey: #333333;
   --color-ubuntu-terminal: #2C001E;
+
+  /* index.html에서 받아오는 Ubuntu 서체를 Tailwind 기본 스택에 연결한다.
+     이걸 빼면 font-mono가 시스템 기본 monospace로 떨어져 터미널 느낌이 사라진다. */
+  --font-sans: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Ubuntu Mono', ui-monospace, 'Cascadia Code', 'Consolas', monospace;
 }
 
 body {
   margin: 0;
-  /* 실제 우분투 느낌의 3색 대각선 그라데이션 */
+  /* 배경 그라데이션은 App.vue 루트가 화면을 덮으므로 실제로는 보이지 않지만,
+     스크롤 바운스 등으로 가장자리가 드러날 때를 대비해 같은 색을 토큰으로 맞춰 둔다. */
   background: linear-gradient(
     135deg,
-    #300A24 0%,
-    #5E2750 45%,
-    #E95420 100%
+    var(--color-ubuntu-purple) 0%,
+    var(--color-ubuntu-mid-purple) 45%,
+    var(--color-ubuntu-orange) 100%
   );
   background-attachment: fixed; /* 스크롤해도 배경 고정 */
   min-height: 100vh;
   color: white;
-  font-family: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   overflow: hidden;
 }
 
@@ -49,7 +55,7 @@ body::before {
 }
 
 #app {
-  animation: app-fade-in 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: app-fade-in 2s ease-in-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,20 +10,59 @@ const emit = defineEmits<{ close: [] }>()
 
 const panelRef = ref<HTMLElement | null>(null)
 
-const onKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape') emit('close')
+// 다이얼로그를 연 요소. 닫을 때 여기로 포커스를 돌려준다.
+let previouslyFocused: HTMLElement | null = null
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+
+const focusableInPanel = () =>
+  panelRef.value ? [...panelRef.value.querySelectorAll<HTMLElement>(FOCUSABLE)] : []
+
+// Tab이 다이얼로그 밖으로 새어나가지 않도록 순환시킨다
+const trapTab = (event: KeyboardEvent) => {
+  const items = focusableInPanel()
+  const first = items[0]
+  const last = items[items.length - 1]
+  if (!first || !last) {
+    // 포커스 가능한 요소가 없으면 패널 자신에 묶어둔다
+    event.preventDefault()
+    panelRef.value?.focus()
+    return
+  }
+
+  const active = document.activeElement
+  if (event.shiftKey && (active === first || active === panelRef.value)) {
+    event.preventDefault()
+    last.focus()
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault()
+    first.focus()
+  }
 }
 
-// 열려 있는 동안에만 Esc 리스너를 붙인다
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    emit('close')
+    return
+  }
+  if (event.key === 'Tab') trapTab(event)
+}
+
+// 열려 있는 동안에만 리스너를 붙인다
 watch(
   () => props.project,
   async (project) => {
     if (project) {
+      previouslyFocused = document.activeElement as HTMLElement | null
       window.addEventListener('keydown', onKeydown)
       await nextTick()
       panelRef.value?.focus()
     } else {
       window.removeEventListener('keydown', onKeydown)
+      // 닫은 뒤 원래 카드로 돌아가야 키보드 사용자가 위치를 잃지 않는다
+      previouslyFocused?.focus()
+      previouslyFocused = null
     }
   },
 )

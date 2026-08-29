@@ -123,11 +123,14 @@ onUnmounted(() => {
     <header
       class="relative h-7 bg-black/50 backdrop-blur-md flex justify-between items-center px-2 md:px-4 text-[12px] md:text-[13px] z-50 shrink-0 select-none"
     >
-      <div class="hover:bg-white/10 px-2 h-full flex items-center">Activities</div>
+      <!-- 상단바는 우분투 셸을 흉내낸 장식이다. 클릭 기능이 없으므로
+           눌릴 것처럼 보이는 호버 효과를 두지 않는다. -->
+      <div class="px-2 h-full flex items-center">Activities</div>
       <div class="absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
         {{ currentTime }}
       </div>
-      <div class="flex gap-2 md:gap-4 items-center">
+      <!-- 상태 아이콘은 실제 상태와 연결돼 있지 않은 장식이라 보조기기에서 숨긴다 -->
+      <div class="flex gap-2 md:gap-4 items-center" aria-hidden="true">
         <span>📶</span><span>🔊</span><span>🔋</span>
       </div>
     </header>
@@ -181,7 +184,7 @@ onUnmounted(() => {
       <!-- 3. Main Area: 이 요소가 스크롤 컨테이너다 -->
       <main
         ref="scroller"
-        class="flex-1 relative overflow-y-auto overflow-x-hidden p-4 md:p-10 scroll-smooth"
+        class="flex-1 relative overflow-y-auto overflow-x-hidden p-4 md:p-10 scroll-smooth scrollbar-thin"
       >
         <RouterView />
       </main>

@@ -1,8 +1,14 @@
 <script setup lang="ts">
-// 우분투 창 크롬(타이틀바 + 신호등 버튼)을 재사용하기 위한 래퍼
-defineProps<{
-  title: string
-}>()
+// 우분투 창 크롬(타이틀바 + 신호등)을 재사용하기 위한 래퍼.
+// 신호등은 장식이므로 aria-hidden으로 보조기기에서 숨긴다.
+withDefaults(
+  defineProps<{
+    title: string
+    /** 본문 영역에 덧붙일 클래스 (예: 터미널의 font-mono) */
+    bodyClass?: string
+  }>(),
+  { bodyClass: '' },
+)
 </script>
 
 <template>
@@ -21,7 +27,7 @@ defineProps<{
       </span>
     </header>
 
-    <div class="p-4 md:p-6">
+    <div class="p-4 md:p-6" :class="bodyClass">
       <slot />
     </div>
   </section>

@@ -2,13 +2,24 @@
 // 프로필.md에 없는 경험·수치·기술은 절대 추가하지 않는다.
 // 공개 웹페이지이므로 자격증 번호·학번 등 식별번호는 싣지 않는다.
 
-import type { Project, TimelineEntry, Certificate, SkillGroup, Contact } from '@/types'
+import type {
+  Project,
+  TimelineEntry,
+  Certificate,
+  SkillGroup,
+  Contact,
+  Strength,
+} from '@/types'
 
 // 터미널 프롬프트는 한 곳에서만 정의한다
+const SHELL_USER = 'junseon'
+const SHELL_HOST = 'dev'
+
 export const shell = {
-  user: 'junseon',
-  host: 'dev',
-  fullHost: 'junseon@embedded-dev',
+  user: SHELL_USER,
+  host: SHELL_HOST,
+  // 창 제목과 프롬프트의 호스트명이 어긋나지 않도록 조합해서 만든다
+  fullHost: `${SHELL_USER}@${SHELL_HOST}`,
 } as const
 
 export const profile = {
@@ -281,7 +292,7 @@ export const contacts: Contact[] = [
   },
 ]
 
-export const strengths = [
+export const strengths: Strength[] = [
   {
     title: 'HW와 SW를 함께 보는 시스템 관점',
     body: '전자공학 전공으로 하드웨어 동작 원리를 이해하고, 소프트웨어로 이를 제어하는 관점에서 문제를 봅니다. 임베디드 시스템, 로봇, 센서, 모터 제어처럼 실제 하드웨어와 맞닿는 소프트웨어에 강점을 두고자 합니다.',
