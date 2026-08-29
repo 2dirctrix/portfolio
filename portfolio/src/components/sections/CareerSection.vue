@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { timeline, certificates, trainings } from '@/data/profile'
+import { ref } from 'vue'
+import { timeline, awards, certificates, trainings } from '@/data/profile'
 import AppWindow from '../AppWindow.vue'
 import ShellPrompt from '../ShellPrompt.vue'
+
+// 접힌 상태로 시작해 클릭하면 펼쳐진다
+const awardsOpen = ref(false)
 </script>
 
 <template>
@@ -43,6 +47,70 @@ import ShellPrompt from '../ShellPrompt.vue'
             </ul>
           </li>
         </ol>
+      </AppWindow>
+
+      <AppWindow title="awards/">
+        <button
+          type="button"
+          class="w-full flex items-center justify-between gap-3 cursor-pointer group"
+          :aria-expanded="awardsOpen"
+          aria-controls="awards-list"
+          @click="awardsOpen = !awardsOpen"
+        >
+          <span class="text-base md:text-lg font-bold text-white">수상 내역</span>
+          <span class="flex items-center gap-2 shrink-0">
+            <span class="font-mono text-base md:text-lg font-bold text-white">
+              {{ awards.length }}건
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              class="w-6 h-6 fill-white transition-transform duration-200"
+              :class="awardsOpen ? 'rotate-180' : ''"
+              aria-hidden="true"
+            >
+              <path d="M12 15.5 5.5 9l1.4-1.4L12 12.7l5.1-5.1L18.5 9z" />
+            </svg>
+          </span>
+        </button>
+
+        <!-- grid-rows 0fr→1fr 트릭: max-height를 추정하지 않고도 높이가 자연스럽게 늘어난다 -->
+        <div
+          id="awards-list"
+          class="grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none"
+          :class="awardsOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+        >
+          <div class="overflow-hidden">
+            <ul class="space-y-4 pt-4">
+              <li
+                v-for="award in awards"
+                :key="`${award.title}-${award.sortKey}`"
+                class="pb-4 last:pb-0 border-b border-white/10 last:border-0"
+              >
+                <div class="flex items-start justify-between gap-3 flex-wrap">
+                  <p class="font-bold text-white text-sm md:text-base">
+                    {{ award.title }}
+                    <span v-if="award.project" class="text-white/55 font-normal">
+                      — {{ award.project }}
+                    </span>
+                  </p>
+                  <span
+                    class="shrink-0 text-[10px] md:text-[11px] font-mono px-2 py-0.5 rounded-full bg-ubuntu-orange/20 text-ubuntu-orange border border-ubuntu-orange/40"
+                  >
+                    {{ award.rank }}
+                  </span>
+                </div>
+
+                <p v-if="award.category" class="text-white/60 text-[13px] mt-1">
+                  {{ award.category }}
+                </p>
+
+                <p class="font-mono text-[11px] text-white/35 mt-1">
+                  {{ award.org }} · {{ award.period }} · {{ award.team }}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </AppWindow>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

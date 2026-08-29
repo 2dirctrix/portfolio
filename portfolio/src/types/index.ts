@@ -39,6 +39,23 @@ export interface TimelineEntry {
   ongoing?: boolean
 }
 
+export interface Award {
+  /** 상 이름 (예: 프로젝트 우수상) */
+  title: string
+  /** 수여 기관 */
+  org: string
+  /** 등수·범위 (예: 광주 2반 3등) */
+  rank: string
+  period: string
+  /** 정렬용 시작일 (YYYY-MM-DD). 화면에는 나오지 않는다 */
+  sortKey: string
+  /** 어떤 프로젝트로 받았는지. 개인 수상은 비워둔다 */
+  project?: string
+  /** 프로젝트 구분 (예: 자율 프로젝트 · 오픈소스 주제) */
+  category?: string
+  team: string
+}
+
 export interface Strength {
   title: string
   body: string

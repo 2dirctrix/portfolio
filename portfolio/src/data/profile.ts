@@ -9,6 +9,7 @@ import type {
   SkillGroup,
   Contact,
   Strength,
+  Award,
 } from '@/types'
 
 // 터미널 프롬프트는 한 곳에서만 정의한다
@@ -71,7 +72,8 @@ const projectList: Project[] = [
     subtitle: '병원 내 알약 운송 자율주행 로봇',
     period: '2025.08 ~ 2025.09',
     sortKey: '2025-08-25',
-    team: '7인',
+    // 7인으로 시작했으나 막바지에 1명이 이탈해 최종 6인으로 수상 (상장 원본 확인)
+    team: '7인 시작 · 최종 6인',
     award: 'SSAFY 프로젝트 우수상',
     role: ['팀장', 'AI 개발', 'HW(ROS2) 개발'],
     description:
@@ -233,7 +235,7 @@ export const timeline: TimelineEntry[] = [
     points: [
       'Embedded Robotics 트랙을 목표로 지원했으나 배치 결과 Python/Web 트랙에 배정',
       'Python/Web 커리큘럼을 수행하면서 Embedded Robotics 분야를 별도로 학습',
-      '진행한 네 개의 프로젝트 중 세 개에서 프로젝트 우수상 수상',
+      '1학기 코딩 집중과정 종합성적 1등으로 성적우수상, 진행한 네 개의 프로젝트 중 세 개에서 프로젝트 우수상 수상',
     ],
   },
   {
@@ -252,6 +254,61 @@ export const timeline: TimelineEntry[] = [
     ],
   },
 ]
+
+// 상장 원본으로 확인된 수상 내역 (프로필.md 3번).
+// 증서번호와 팀원 실명은 공개 페이지에 싣지 않는다.
+const awardList: Award[] = [
+  {
+    title: '프로젝트 우수상',
+    org: 'SSAFY',
+    rank: '광주 1반 3등',
+    period: '2025.10 ~ 2025.11',
+    sortKey: '2025-10-10',
+    project: 'Smart Window',
+    category: '자율 프로젝트 · 오픈소스 주제',
+    team: '6인',
+  },
+  {
+    title: '프로젝트 우수상',
+    org: 'SSAFY',
+    rank: '광주 2반 3등',
+    period: '2025.08 ~ 2025.09',
+    sortKey: '2025-08-25',
+    project: 'Licar',
+    category: '특화 프로젝트 · 자율주행(IoT) 도메인',
+    team: '최종 6인',
+  },
+  {
+    title: '프로젝트 우수상',
+    org: 'SSAFY',
+    rank: '광주 2반 3등',
+    period: '2025.07 ~ 2025.08',
+    sortKey: '2025-07-07',
+    project: 'League of Algologic',
+    category: '공통 프로젝트 · 웹기술 트랙',
+    team: '6인',
+  },
+  {
+    title: '1학기 성적우수상',
+    org: 'SSAFY',
+    rank: '광주 2반 1등',
+    period: '2025.01 ~ 2025.05',
+    sortKey: '2025-01-07',
+    category: '코딩 집중과정 종합성적',
+    team: '개인',
+  },
+  {
+    title: '캡스톤 디자인 A+',
+    org: '수원대학교 전자공학과',
+    rank: '최고 학점',
+    period: '2023.04 ~ 2023.06',
+    sortKey: '2023-04-01',
+    project: '재난현장 정찰로봇',
+    team: '4인',
+  },
+]
+
+export const awards: Award[] = [...awardList].sort((a, b) => b.sortKey.localeCompare(a.sortKey))
 
 export const certificates: Certificate[] = [
   { name: '리눅스마스터 2급', org: '한국정보통신진흥협회', date: '2026.01' },
