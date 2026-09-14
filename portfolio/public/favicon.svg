@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 우분투 터미널 창: 보라 배경 + 오렌지 프롬프트 -->
+  <rect width="64" height="64" rx="14" fill="#2C001E"/>
+  <path d="M14 20 L28 32 L14 44" fill="none" stroke="#E95420" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="41" width="18" height="6" rx="3" fill="#FFFFFF"/>
+</svg>
