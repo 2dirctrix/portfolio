@@ -1,7 +1,7 @@
 // src/types/index.ts
 
 export interface ProjectImage {
-  /** src/assets/projects/ 안의 파일명 (예: 'licar-demo.png') */
+  /** src/assets/projects/ 기준 경로 (예: 'licar/그림13.png') */
   file: string
   /** 스크린리더용 설명. 무엇이 찍혀 있는지 적는다 */
   alt: string
@@ -23,8 +23,10 @@ export interface Project {
   description: string
   details: string[]
   techStack: string[]
-  /** 첫 장이 카드 썸네일로 쓰인다. 없으면 이미지 영역 자체가 표시되지 않는다 */
+  /** 상세 창 갤러리에 표시된다 (카드에는 나오지 않는다). 첫 장이 맨 처음 보인다 */
   images?: ProjectImage[]
+  /** 카드 제목 옆에 붙는 작은 로고. projects/ 기준 경로 (예: 'licar/logo.png') */
+  logo?: string
 }
 
 export interface SkillItem {
@@ -50,7 +52,10 @@ export interface TimelineLink {
 export interface TimelineEntry {
   period: string
   title: string
+  /** 교육 대상이나 소속 (예: 삼성 전 계열사 사장단·임원진 대상) */
   org: string
+  /** 교육을 운영한 기관 (예: 멀티캠퍼스) */
+  agency?: string
   points: string[]
   /** 현재 진행 중인 경력이면 배지를 표시한다 */
   ongoing?: boolean
