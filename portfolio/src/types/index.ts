@@ -1,5 +1,12 @@
 // src/types/index.ts
 
+export interface ProjectImage {
+  /** src/assets/projects/ 안의 파일명 (예: 'licar-demo.png') */
+  file: string
+  /** 스크린리더용 설명. 무엇이 찍혀 있는지 적는다 */
+  alt: string
+}
+
 export interface Project {
   id: number
   title: string
@@ -16,6 +23,8 @@ export interface Project {
   description: string
   details: string[]
   techStack: string[]
+  /** 첫 장이 카드 썸네일로 쓰인다. 없으면 이미지 영역 자체가 표시되지 않는다 */
+  images?: ProjectImage[]
 }
 
 export interface SkillItem {
@@ -30,6 +39,14 @@ export interface SkillGroup {
   items: SkillItem[]
 }
 
+export interface TimelineLink {
+  /** 화면에 보이는 글 (기사 제목 등) */
+  label: string
+  href: string
+  /** 출처 표기 (예: 삼성 뉴스룸) */
+  source?: string
+}
+
 export interface TimelineEntry {
   period: string
   title: string
@@ -37,6 +54,8 @@ export interface TimelineEntry {
   points: string[]
   /** 현재 진행 중인 경력이면 배지를 표시한다 */
   ongoing?: boolean
+  /** 관련 기사·자료 링크 */
+  links?: TimelineLink[]
 }
 
 export interface Award {

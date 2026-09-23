@@ -4,8 +4,18 @@ import { projects } from '@/data/profile'
 import type { Project } from '@/types'
 import ShellPrompt from '../ShellPrompt.vue'
 import ProjectDialog from '../ProjectDialog.vue'
+import { resolveProjectImage } from '@/data/projectImages'
 
 const selected = ref<Project | null>(null)
+
+// 카드 썸네일은 첫 번째 이미지를 쓴다
+const coverOf = (project: Project) => {
+  const first = project.images?.[0]
+  if (!first) return undefined
+
+  const url = resolveProjectImage(first.file)
+  return url ? { url, alt: first.alt } : undefined
+}
 
 // 카드에는 기술 스택을 일부만 노출하고 나머지는 개수로 접는다
 const VISIBLE_TECH = 3
@@ -36,6 +46,16 @@ const VISIBLE_TECH = 3
             <span class="w-3 h-3 rounded-full bg-ubuntu-orange"></span>
           </span>
         </span>
+
+        <!-- 대표 이미지(첫 장). 없는 프로젝트는 이 영역 자체가 빠진다 -->
+        <img
+          v-if="coverOf(project)"
+          :src="coverOf(project)!.url"
+          :alt="coverOf(project)!.alt"
+          class="w-full aspect-video object-cover border-b border-white/10"
+          loading="lazy"
+          decoding="async"
+        />
 
         <span class="p-4 flex flex-col flex-1">
           <span class="flex items-start justify-between gap-2 mb-1">

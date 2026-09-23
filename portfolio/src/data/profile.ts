@@ -199,8 +199,18 @@ export const projects: Project[] = [...projectList].sort((a, b) =>
 
 export const timeline: TimelineEntry[] = [
   {
+    period: '2026.08 ~ 진행중',
+    title: 'AI Agent 교육 보조 강사',
+    org: '시큐아이, NH농협, 삼천리 등 각종 대기업 임원 대상',
+    points: [
+      '생성형 AI·AX 트렌드와 비즈니스 적용 사례를 주제로 한 교육에서 수강생 질의 응대',
+      '조직 운영·의사결정 관점의 AI 활용 실습 지원',
+      '교육 흐름이 끊기지 않도록 현장 진행 지원',
+    ],
+  },
+  {
     period: '2026.08 ~ 2026.09',
-    title: 'AI Agent 제작 교육 실습코치',
+    title: 'AI Agent 제작 교육 보조 FT',
     org: 'SK이노베이션 임원 및 임직원 대상',
     points: [
       '생성형 AI·AX 트렌드와 비즈니스 적용 사례를 주제로 한 교육에서 수강생 질의 응대',
@@ -218,6 +228,13 @@ export const timeline: TimelineEntry[] = [
       'Claude, NotebookLM, Claude Code 등 생성형 AI 도구 활용 지원',
       'Claude Code 기반 Agent 개발 과정의 수강생 질의 응대',
       '실습 오류·계정·도구 사용 등 현장 이슈 대응',
+    ],
+    links: [
+      {
+        label: "삼성, 'AI 대전환'… 모든 업무에 AI 도입 본격화",
+        source: '삼성 뉴스룸',
+        href: 'https://news.samsung.com/kr/%ec%82%bc%ec%84%b1-ai-%eb%8c%80%ec%a0%84%ed%99%98-%eb%aa%a8%eb%93%a0-%ec%97%85%eb%ac%b4%ec%97%90-ai-%eb%8f%84%ec%9e%85-%eb%b3%b8%ea%b2%a9%ed%99%94',
+      },
     ],
   },
   {
@@ -242,7 +259,7 @@ export const timeline: TimelineEntry[] = [
     org: '학점 3.52 / 4.5',
     points: [
       '회로이론, 전자회로, 신호처리, DSP/FFT, EMI/EMC, 반도체 패키징 및 신뢰성',
-      "컴퓨터공학과 '임베디드 프로그래밍 실습' 수강 (A+)",
+      "반도체 공정 교육, 인공지능 가속프로세서 교육, RF 무선 통신시스템 교육 수료",
     ],
   },
 ]

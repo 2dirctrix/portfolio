@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onUnmounted, nextTick } from 'vue'
 import type { Project } from '@/types'
+import ProjectGallery from './ProjectGallery.vue'
 
 const props = defineProps<{
   project: Project | null
@@ -111,6 +112,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           </header>
 
           <div class="p-5 md:p-6 overflow-y-auto scrollbar-thin">
+            <ProjectGallery v-if="project.images?.length" :images="project.images" />
+
             <div class="flex items-start justify-between gap-3 mb-1">
               <h2 class="text-xl md:text-2xl font-bold text-white">{{ project.title }}</h2>
               <span

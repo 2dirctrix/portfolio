@@ -45,6 +45,23 @@ const awardsOpen = ref(false)
                 <span>{{ point }}</span>
               </li>
             </ul>
+
+            <!-- 관련 기사 등 외부 링크 -->
+            <ul v-if="entry.links?.length" class="mt-3 space-y-1">
+              <li v-for="link in entry.links" :key="link.href">
+                <a
+                  :href="link.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-baseline gap-1.5 text-[13px] text-ubuntu-orange hover:underline underline-offset-4"
+                >
+                  <span>{{ link.label }}</span>
+                  <span v-if="link.source" class="text-white/40 text-[11px] font-mono">
+                    {{ link.source }} ↗
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ol>
       </AppWindow>
