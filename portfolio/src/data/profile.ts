@@ -69,6 +69,7 @@ const projectList: Project[] = [
   {
     id: 1,
     title: 'Licar',
+    logo: 'licar/logo.png',
     subtitle: '병원 내 알약 운송 자율주행 로봇',
     period: '2025.08 ~ 2025.09',
     sortKey: '2025-08-25',
@@ -101,12 +102,12 @@ const projectList: Project[] = [
         file: 'licar/그림15.png',
         alt: 'Jira 이슈 현황 대시보드. 전체 191건 중 188건 완료로 진척률 98%',
       },
-      { file: 'licar/그림13.png', alt: '원소기호 모양으로 디자인한 LiCar 프로젝트 로고' },
     ],
   },
   {
     id: 2,
     title: 'Smart Window',
+    logo: 'smartwindow/logo.jpg',
     subtitle: '창문형 투명 디스플레이 IoT',
     period: '2025.10 ~ 2025.11',
     sortKey: '2025-10-10',
@@ -152,6 +153,7 @@ const projectList: Project[] = [
   {
     id: 3,
     title: 'League of Algologic',
+    logo: 'algo/logo.png',
     subtitle: '웹 알고리즘 코딩 배틀',
     period: '2025.08',
     sortKey: '2025-08-04',
@@ -183,12 +185,12 @@ const projectList: Project[] = [
         file: 'algo/그림12.png',
         alt: '위 JSONL을 백엔드가 요구하는 형식으로 가공한 결과. 문제 정보가 SQL INSERT 문으로 변환됐다',
       },
-      { file: 'algo/그림8.png', alt: 'League of Algologic 프로젝트 로고' },
     ],
   },
   {
     id: 4,
     title: '3D인생4컷',
+    logo: '3d인생네컷/logo.png',
     subtitle: '3D 재구축 포토부스',
     period: '2025.07 ~ 2025.08',
     sortKey: '2025-07-07',
@@ -203,6 +205,24 @@ const projectList: Project[] = [
       '엔코더 펄스 피드백 신호를 카운팅하는 제어 로직을 C++로 구현',
     ],
     techStack: ['C++', 'PSpice', 'AutoCAD'],
+    images: [
+      {
+        file: '3d인생네컷/인생네컷6.png',
+        alt: '3D로 재구축된 인물 결과물. 전처리 전 결과로 가장자리에 점이 흩어지는 노이즈가 보인다',
+      },
+      {
+        file: '3d인생네컷/인생네컷7.png',
+        alt: '같은 인물을 다른 조건에서 재구축한 결과. 전처리 이후 배경 이미지를 삭제된 모습이다.',
+      },
+      {
+        file: '3d인생네컷/인생네컷1.png',
+        alt: '가우시안 필터를 사용하여 얼굴의 형상을 나타내었다',
+      },
+      {
+        file: '3d인생네컷/인생네컷2.jpg',
+        alt: '촬영에 쓴 실제 장비 모습',
+      },
+    ],
   },
   {
     id: 5,
@@ -308,6 +328,7 @@ export const timeline: TimelineEntry[] = [
     period: '2025.01 ~ 2025.12',
     title: 'SSAFY 13기',
     org: 'Samsung Software Academy for Youth',
+    agency: '삼성전자 주식회사',
     points: [
       'Embedded Robotics 트랙을 목표로 지원했으나 배치 결과 Python/Web 트랙에 배정',
       'Python/Web 커리큘럼을 수행하면서 Embedded Robotics 분야를 별도로 학습',

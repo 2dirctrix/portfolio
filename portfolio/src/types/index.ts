@@ -25,6 +25,8 @@ export interface Project {
   techStack: string[]
   /** 상세 창 갤러리에 표시된다 (카드에는 나오지 않는다). 첫 장이 맨 처음 보인다 */
   images?: ProjectImage[]
+  /** 카드 제목 옆에 붙는 작은 로고. projects/ 기준 경로 (예: 'licar/logo.png') */
+  logo?: string
 }
 
 export interface SkillItem {

@@ -33,12 +33,9 @@ const awardsOpen = ref(false)
               </span>
             </p>
             <h3 class="text-base md:text-lg font-bold text-white mt-0.5">{{ entry.title }}</h3>
-            <p class="text-white/55 text-sm">
-              <!-- 운영 기관이 있으면 대상 앞에 붙인다 -->
-              <span v-if="entry.agency" class="text-white/75">{{ entry.agency }}</span>
-              <span v-if="entry.agency" class="text-white/30 mx-1.5" aria-hidden="true">·</span>
-              <span>{{ entry.org }}</span>
-            </p>
+            <!-- 운영 기관을 먼저 쓰고, 교육 대상은 다음 줄에 둔다 -->
+            <p v-if="entry.agency" class="text-white/75 text-sm"> 기관: {{ entry.agency }}</p>
+            <p class="text-white/55 text-sm">{{ entry.org }}</p>
 
             <ul v-if="entry.points.length" class="mt-2 space-y-1">
               <li

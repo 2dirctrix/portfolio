@@ -4,8 +4,12 @@ import { projects } from '@/data/profile'
 import type { Project } from '@/types'
 import ShellPrompt from '../ShellPrompt.vue'
 import ProjectDialog from '../ProjectDialog.vue'
+import { resolveProjectImage } from '@/data/projectImages'
 
 const selected = ref<Project | null>(null)
+
+const logoOf = (project: Project) =>
+  project.logo ? resolveProjectImage(project.logo) : undefined
 
 // 카드에는 기술 스택을 일부만 노출하고 나머지는 개수로 접는다
 const VISIBLE_TECH = 3
@@ -38,10 +42,19 @@ const VISIBLE_TECH = 3
         </span>
 
         <span class="p-4 flex flex-col flex-1">
-          <span class="flex items-start justify-between gap-2 mb-1">
+          <span class="flex items-center gap-2 mb-1">
             <span class="text-base md:text-lg font-bold text-white leading-snug">
               {{ project.title }}
             </span>
+            <!-- 로고는 장식이라 alt를 비워 보조기기에서 건너뛰게 한다 (제목이 바로 옆에 있다) -->
+            <img
+              v-if="logoOf(project)"
+              :src="logoOf(project)"
+              alt=""
+              class="w-6 h-6 md:w-7 md:h-7 shrink-0 rounded object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </span>
 
           <span class="block text-white/55 text-[13px] mb-2">{{ project.subtitle }}</span>
