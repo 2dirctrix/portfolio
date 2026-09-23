@@ -84,6 +84,25 @@ const projectList: Project[] = [
       '팀장으로서 GitHub 저장소 관리와 Jira 기반 일정 관리를 직접 수행',
     ],
     techStack: ['ROS2', 'Nav2', 'Gazebo', 'Python', 'YOLO', 'Jira'],
+    images: [
+      {
+        file: 'licar/그림14.png',
+        alt: 'Gazebo로 구성한 병원 시뮬레이션. 왼쪽은 Lidar 스캔 뷰, 오른쪽 위는 Rviz2 맵, 아래는 병원 로비 3D 화면',
+      },
+      {
+        file: 'licar/그림21.png',
+        alt: '시스템 구성도. 로봇(NFC·모터·카메라·YOLO)과 백엔드(PostgreSQL·Redis·Jenkins), 시뮬레이터(Nav2·Gazebo)가 ROS2와 MQTT로 연결된 구조',
+      },
+      {
+        file: 'licar/그림20.png',
+        alt: '최종 YOLO 학습 지표. precision과 recall이 0.9 부근, mAP50이 0.95까지 올라간 그래프',
+      },
+      {
+        file: 'licar/그림15.png',
+        alt: 'Jira 이슈 현황 대시보드. 전체 191건 중 188건 완료로 진척률 98%',
+      },
+      { file: 'licar/그림13.png', alt: '원소기호 모양으로 디자인한 LiCar 프로젝트 로고' },
+    ],
   },
   {
     id: 2,
@@ -103,6 +122,32 @@ const projectList: Project[] = [
       'BLE 라이브러리로 스마트폰과 라즈베리파이 양쪽에서 동작하는 제어 코드 작성',
     ],
     techStack: ['Raspberry Pi', 'Qt', 'C++', 'BLE', 'MQTT', 'Wireshark'],
+    images: [
+      {
+        file: 'smartwindow/그림34.jpg',
+        alt: '완성된 창문형 디스플레이 실물. 나무 프레임 안에 PDLC 필름을 붙인 유리가 들어가 있다',
+      },
+      {
+        file: 'smartwindow/그림33.jpg',
+        alt: '백라이트를 켠 상태의 패널 내부. 아래쪽에 제어 모듈과 배선이 보인다',
+      },
+      {
+        file: 'smartwindow/그림24.png',
+        alt: '창문 기구를 3D로 설계한 모델링 화면. 창틀과 개폐 레일, 센서 모듈 배치를 검토한 것',
+      },
+      {
+        file: 'smartwindow/스크린샷 2026-09-23 200145.png',
+        alt: 'nRF Connect 앱으로 창문 개폐기의 MAC 주소와 GATT 서비스·특성 UUID를 찾아낸 화면',
+      },
+      {
+        file: 'smartwindow/스크린샷 2026-09-23 200150.png',
+        alt: 'Wireshark로 쓰기 명령 패킷을 분석한 화면. 값 끝자리 0x64가 개폐율 100%를 뜻한다는 것을 알아낸 과정',
+      },
+      {
+        file: 'smartwindow/그림29.png',
+        alt: 'Qt 화면에 표출한 센서 값. CO2 24ppm, PM2.5 5.5, 온도 23.6도, 습도 25.1%',
+      },
+    ],
   },
   {
     id: 3,
@@ -121,6 +166,25 @@ const projectList: Project[] = [
       '프로젝트 영상 포트폴리오 제작',
     ],
     techStack: ['Python', 'JSONL', 'Frontend'],
+    images: [
+      {
+        file: 'algo/그림9.png',
+        alt: '서비스 메인 화면. 대전 생성·찾기 버튼과 자주 출제되는 알고리즘 유형, 상위 플레이어 순위가 보인다',
+      },
+      {
+        file: 'algo/그림10.png',
+        alt: '코딩 대전 화면. 왼쪽에 Two Sum 문제 설명, 가운데 코드 에디터, 아래에 테스트케이스별 채점 결과',
+      },
+      {
+        file: 'algo/그림11.png',
+        alt: 'LeetCode에서 받은 원본 JSONL 데이터. task_id, tags, input_output 등이 중첩된 구조',
+      },
+      {
+        file: 'algo/그림12.png',
+        alt: '위 JSONL을 백엔드가 요구하는 형식으로 가공한 결과. 문제 정보가 SQL INSERT 문으로 변환됐다',
+      },
+      { file: 'algo/그림8.png', alt: 'League of Algologic 프로젝트 로고' },
+    ],
   },
   {
     id: 4,

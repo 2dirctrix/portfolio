@@ -1,7 +1,7 @@
 // src/types/index.ts
 
 export interface ProjectImage {
-  /** src/assets/projects/ 안의 파일명 (예: 'licar-demo.png') */
+  /** src/assets/projects/ 기준 경로 (예: 'licar/그림13.png') */
   file: string
   /** 스크린리더용 설명. 무엇이 찍혀 있는지 적는다 */
   alt: string
