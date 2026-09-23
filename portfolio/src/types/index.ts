@@ -23,7 +23,7 @@ export interface Project {
   description: string
   details: string[]
   techStack: string[]
-  /** 첫 장이 카드 썸네일로 쓰인다. 없으면 이미지 영역 자체가 표시되지 않는다 */
+  /** 상세 창 갤러리에 표시된다 (카드에는 나오지 않는다). 첫 장이 맨 처음 보인다 */
   images?: ProjectImage[]
 }
 

@@ -112,8 +112,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           </header>
 
           <div class="p-5 md:p-6 overflow-y-auto scrollbar-thin">
-            <ProjectGallery v-if="project.images?.length" :images="project.images" />
-
             <div class="flex items-start justify-between gap-3 mb-1">
               <h2 class="text-xl md:text-2xl font-bold text-white">{{ project.title }}</h2>
               <span
@@ -160,6 +158,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
                 {{ tech }}
               </li>
             </ul>
+
+            <ProjectGallery v-if="project.images?.length" :images="project.images" />
           </div>
         </div>
       </div>

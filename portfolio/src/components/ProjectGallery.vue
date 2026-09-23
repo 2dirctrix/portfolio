@@ -32,7 +32,8 @@ const go = (index: number) => {
 </script>
 
 <template>
-  <figure v-if="resolved.length" class="mb-5">
+  <!-- 상세 창 맨 아래에 놓이므로 위쪽에 여백과 구분선을 둔다 -->
+  <figure v-if="resolved.length" class="mt-6 pt-5 border-t border-white/10">
     <div class="relative rounded-md overflow-hidden border border-white/10 bg-black/40">
       <img
         :src="resolved[current]!.url"
