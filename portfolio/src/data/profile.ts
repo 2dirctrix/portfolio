@@ -266,6 +266,7 @@ export const timeline: TimelineEntry[] = [
     period: '2026.08 ~ 진행중',
     title: 'AI Agent 교육 보조 강사',
     org: '시큐아이, NH농협, 삼천리 등 각종 대기업 임원 대상',
+    agency: '생산성연구소',
     points: [
       '생성형 AI·AX 트렌드와 비즈니스 적용 사례를 주제로 한 교육에서 수강생 질의 응대',
       '조직 운영·의사결정 관점의 AI 활용 실습 지원',
@@ -276,6 +277,7 @@ export const timeline: TimelineEntry[] = [
     period: '2026.08 ~ 2026.09',
     title: 'AI Agent 제작 교육 보조 FT',
     org: 'SK이노베이션 임원 및 임직원 대상',
+    agency: '팀 제이커브',
     points: [
       '생성형 AI·AX 트렌드와 비즈니스 적용 사례를 주제로 한 교육에서 수강생 질의 응대',
       '조직 운영·의사결정 관점의 AI 활용 실습 지원',
@@ -287,6 +289,7 @@ export const timeline: TimelineEntry[] = [
     period: '2026.05 ~ 2026.08',
     title: 'AI Agent 교육 실습코치',
     org: '삼성 전 계열사 사장단·임원진 대상',
+    agency: '멀티캠퍼스',
     points: [
       '주강사 강의 흐름에 따른 AI Agent 실습 보조',
       'Claude, NotebookLM, Claude Code 등 생성형 AI 도구 활용 지원',

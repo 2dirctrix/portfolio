@@ -50,7 +50,10 @@ export interface TimelineLink {
 export interface TimelineEntry {
   period: string
   title: string
+  /** 교육 대상이나 소속 (예: 삼성 전 계열사 사장단·임원진 대상) */
   org: string
+  /** 교육을 운영한 기관 (예: 멀티캠퍼스) */
+  agency?: string
   points: string[]
   /** 현재 진행 중인 경력이면 배지를 표시한다 */
   ongoing?: boolean
